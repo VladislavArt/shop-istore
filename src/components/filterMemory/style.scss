@@ -1,0 +1,15 @@
+.filter-memory {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.filter-memory__title {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.filter-memory__list {
+	display: grid;
+	gap: 10px;
+}

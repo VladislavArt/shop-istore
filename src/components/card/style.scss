@@ -1,0 +1,42 @@
+.card, a.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+
+	color: #000;
+	text-decoration: none;
+}
+
+.card__img {
+	width: 250px;
+	height: 220px;
+	object-fit: contain;
+}
+
+.card__title {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.card__price {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 300;
+}
+
+.card__link {
+	color: #000;
+	text-decoration: none;
+}
+
+.card__link::after {
+	content: '';
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}

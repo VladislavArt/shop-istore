@@ -1,0 +1,71 @@
+import type { IProduct } from "@/types/product.type"
+import { createAction, createReducer } from "@reduxjs/toolkit"
+
+type CartState = {
+	cartOpen: boolean
+	items: IProduct[]
+	totalCount: number
+	totalAmount: number
+}
+
+const initialCartState: CartState = {
+	cartOpen: false,
+	items: [],
+	totalCount: 0,
+	totalAmount: 0
+}
+
+export const toggleCartOpenAction = createAction('toggleCart')
+export const addProductCartAction = createAction<IProduct>('addProduct')
+export const increaseCountAction = createAction<IProduct>('increase')
+export const decreaseCountAction = createAction<IProduct>('decrease')
+export const resetProductCartAction = createAction('resetProduct')
+
+export const cartReducer = createReducer(
+	initialCartState,
+	(builder) => {
+		builder.addCase(toggleCartOpenAction, (state) => {
+			state.cartOpen = !state.cartOpen
+		});
+		builder.addCase(resetProductCartAction, (state) => {
+			state.items = []
+			state.totalAmount = 0
+			state.totalCount = 0
+		});
+		builder.addCase(addProductCartAction, (state, action) => {
+			const newItem = action.payload
+			const productExists = state.items?.find(item => item.id === newItem.id)
+			if (productExists) {
+				productExists.count = (productExists.count ?? 0) + 1
+				state.totalCount++
+				state.totalAmount += productExists.price
+			} else {
+				state.items.push({...newItem, count: 1})
+				state.totalCount++
+				state.totalAmount += newItem.price
+			}
+		});
+		builder.addCase(increaseCountAction, (state, action) => {
+			const product = action.payload
+			state.items.map(item => {
+				if (item.id === product.id) {
+					item.count = (item.count ?? 0) + 1
+				}
+			})
+			state.totalCount++
+			state.totalAmount = product.price * state.totalCount
+		});
+		builder.addCase(decreaseCountAction, (state, action) => {
+			const product = action.payload
+			const prod = state.items.find(item => item.id === product.id)
+			if (prod) {
+				prod.count = (prod.count ?? 0) - 1
+			}
+			if (prod?.count === 0) {
+				state.items = state.items.filter(item => item.id !== product.id)
+			}
+			state.totalCount--
+			state.totalAmount -= product.price
+		});
+	}
+)

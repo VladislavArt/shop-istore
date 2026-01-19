@@ -1,0 +1,158 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "imgName": "appleWatch",
+      "title": "Часы Apple Watch Белый",
+      "price": 18000,
+      "cat": "watch",
+      "memory": "0 Tb",
+      "color": "white",
+      "desc": "Стильные и современные часы appleWatch в белом цвете"
+    },
+    {
+      "id": "2",
+      "imgName": "imac",
+      "title": "iMac",
+      "price": 140000,
+      "cat": "comp",
+      "memory": "2 Tb",
+      "color": "white",
+      "desc": "Мощный настольный компьютер iMac с памятью 2 Tb"
+    },
+    {
+      "id": "3",
+      "imgName": "ipad",
+      "title": "iPad",
+      "price": 60000,
+      "cat": "tablet",
+      "memory": "64 Gb",
+      "color": "gray",
+      "desc": "Удобный планшет iPad с памятью 64 Gb"
+    },
+    {
+      "id": "4",
+      "imgName": "iphone",
+      "title": "iPhone",
+      "price": 50000,
+      "cat": "phone",
+      "memory": "128 Gb",
+      "color": "black",
+      "desc": "Современный смартфон iphone с памятью 128 Gb "
+    },
+    {
+      "id": "5",
+      "imgName": "macmini",
+      "title": "MacMini",
+      "price": 78280,
+      "cat": "comp",
+      "memory": "1 Tb",
+      "color": "space-gray",
+      "desc": "Компактный компьютер MacMini с памятью 1 Tb"
+    },
+    {
+      "id": "6",
+      "imgName": "macpro",
+      "title": "MacPro",
+      "price": 120000,
+      "cat": "comp",
+      "memory": "1 Tb",
+      "color": "black",
+      "desc": "Современная профессиональная колонка MacPro 2024 с памятью 512 Gb"
+    },
+    {
+      "id": "7",
+      "imgName": "macprox",
+      "title": "MacProx",
+      "price": 180000,
+      "cat": "comp",
+      "memory": "2 Tb",
+      "color": "gray",
+      "desc": "Современный профессиональный компьютер MacPro 2022 с памятью 2 Tb"
+    },
+    {
+      "id": "8",
+      "imgName": "macbook",
+      "title": "Apple MacBook Air 13",
+      "price": 110000,
+      "cat": "note",
+      "memory": "512 Gb",
+      "color": "gray",
+      "desc": "Ультратонкий ноутбук Apple MacBook Air 13 с памятью 512 Гб в сером цвете"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "slug": "all",
+      "title": "Все"
+    },
+    {
+      "id": "2",
+      "slug": "watch",
+      "title": "Часы"
+    },
+    {
+      "id": "3",
+      "slug": "comp",
+      "title": "Компьютеры"
+    },
+    {
+      "id": "4",
+      "slug": "tablet",
+      "title": "Планшеты"
+    },
+    {
+      "id": "5",
+      "slug": "phone",
+      "title": "Смартфоны"
+    },
+    {
+      "id": "6",
+      "slug": "note",
+      "title": "Ноутбуки"
+    }
+  ],
+  "orders": [
+    {
+      "id": "94ec",
+      "name": "Vladislav",
+      "email": "vrooog@gmail.com",
+      "cart": [
+        {
+          "id": "4",
+          "imgName": "iphone",
+          "title": "iPhone",
+          "price": 50000,
+          "cat": "phone",
+          "memory": "128 Gb",
+          "color": "black",
+          "desc": "Современный смартфон iphone с памятью 128 Gb ",
+          "count": 1
+        },
+        {
+          "id": "3",
+          "imgName": "ipad",
+          "title": "iPad",
+          "price": 60000,
+          "cat": "tablet",
+          "memory": "64 Gb",
+          "color": "gray",
+          "desc": "Удобный планшет iPad с памятью 64 Gb",
+          "count": 1
+        },
+        {
+          "id": "2",
+          "imgName": "imac",
+          "title": "iMac",
+          "price": 140000,
+          "cat": "comp",
+          "memory": "2 Tb",
+          "color": "white",
+          "desc": "Мощный настольный компьютер iMac с памятью 2 Tb",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

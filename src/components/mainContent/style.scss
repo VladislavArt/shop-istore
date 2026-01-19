@@ -1,0 +1,17 @@
+.sort-wrapper {
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.priceReactSelect {
+	padding-right: 50px;
+	width: 300px;
+}
+
+.content__cards-grid {
+	max-width: 1200px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}

@@ -1,0 +1,37 @@
+.btn {
+	position: relative;
+	z-index: 9;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 10px;
+
+	padding: 10px 27px;
+	height: 46px;
+
+	border: none;
+	border-radius: 8px;
+	background: #000;
+
+	cursor: pointer;
+
+	font-size: 18px;
+	font-weight: 500;
+	color: #fff;
+	text-decoration: none;
+
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+.btn:hover, .btn:focus {
+	background-color: #404040;
+}
+
+.btn:active {
+	background-color: #222222;
+}
+
+.btn:disabled {
+	background-color: #9e9e9e;
+}

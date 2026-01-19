@@ -1,0 +1,16 @@
+.cat-title {
+	font-size: 18px;
+	font-weight: 800;
+}
+
+.cat-list {
+	display: grid;
+	gap: 20px;
+	font-size: 18px;
+	list-style: none;
+	padding: 10px 0 0 0;
+	a {
+		text-decoration: none;
+		color: #000;
+	}
+}

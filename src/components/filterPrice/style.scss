@@ -1,0 +1,26 @@
+.filter-price {
+	display: grid;
+	gap: 10px;
+}
+
+.filter-price__title {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.filter-price__input {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+
+}
+
+.input {
+	width: 80px;
+	padding: 5px;
+}
+
+.filter-price__range {
+	padding: 20px 0 0;
+	width: 300px;
+}
