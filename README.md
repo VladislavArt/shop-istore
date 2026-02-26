@@ -1,3 +1,6 @@
+Интернет магазин. С фильтрацией по продуктам, цене, цвету. Запросы реализовал с помощью RTK Querу. Так же реализовал глобальное состояние с помощью Redux toolkit. Проект полностью написан на typescript  и типизирован, даже запросы я типизировал с помощью zod. Собрал проект на vite.
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
