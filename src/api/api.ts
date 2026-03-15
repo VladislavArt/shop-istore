@@ -2,6 +2,7 @@ import { baseApi } from '@/shared/api'
 import type { ICategories } from '@/types/categories.types'
 import { z } from 'zod'
 import type { IProduct, Order, ProductQueryParams, TProductId } from '../types/product.type'
+import { createSearchParams } from '@/utils/CreateSearchParams'
 
 const ProductsDtoSchema = z.object({
 	id: z.union([z.string(), z.number().transform(val => String(val))]),
@@ -22,45 +23,28 @@ const CatsDtoSchema = z.object({
 
 export const api = baseApi.injectEndpoints({
 	endpoints: build => ({
+
 		getCats: build.query<ICategories[], void>({
 			query: () => '/categories',
 			transformResponse: (res: unknown) => CatsDtoSchema.array().parse(res),
 		}),
+
 		getProducts: build.query<
 			IProduct[], ProductQueryParams
 		>({
-			query: ({ category, memory, color, minPrice, maxPrice, sort }) => {
-				const params = new URLSearchParams()
-
-				if (category) {
-					params.append('category', category)
-				}
-				if (memory && memory.length > 0) {
-					memory.forEach(mem => params.append('memory', mem))
-				}
-				if (color && color.length > 0) {
-					color.forEach(col => params.append('color', col))
-				}
-				if (minPrice !== undefined) {
-					params.append('minPrice', minPrice.toString())
-				}
-				if (maxPrice !== undefined) {
-					params.append('maxPrice', maxPrice.toString())
-				}
-				if (sort !== undefined) {
-					params.append('sort', sort)
-				}
-
+			query: (search: ProductQueryParams) => {
+				const params = createSearchParams(search)
 				return `/products?${params.toString()}`
 			},
-			// providesTags: ['Products', { type: 'Products', id: 'LIST' }],
 			transformResponse: (res: unknown) => ProductsDtoSchema.array().parse(res),
 		}),
+
 		getProduct: build.query<IProduct, TProductId>({
 			query: productId => `/products/${productId}`,
 			// providesTags: ['Products'],
 			transformResponse: (res: unknown) => ProductsDtoSchema.parse(res),
 		}),
+
 		addOrders: build.mutation<void, Order>({
 			query: (body) => ({ 
 				method: "POST",
