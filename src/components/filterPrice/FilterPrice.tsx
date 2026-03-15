@@ -7,8 +7,8 @@ import 'react-range-slider-input/dist/style.css'
 
 export function FilterPrice() {
 	const dispatch = useAppDispatch()
-	const min = useAppSelector(state => state.filter.price.min)
-	const max = useAppSelector(state => state.filter.price.max)
+
+	const { price: { min, max } } = useAppSelector(state => state.filter)
 
 	const handleChangeMin = (value: string | undefined) => {
 		dispatch(priceMinAction(Number(value)))
@@ -32,7 +32,9 @@ export function FilterPrice() {
 					suffix='₽'
 					onValueChange={(value) => handleChangeMin(value || '')}
 				/>
+
 				<span>-</span>
+				
 				<CurrencyInput
 					id='priceMax'
 					className='input'
