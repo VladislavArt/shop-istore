@@ -34,13 +34,16 @@ function Order() {
 		handleSubmit,
 		setValue,
 		formState: { errors }
-	} = useForm<Order>()
+	} = useForm<Order>({
+		mode: 'onChange'
+	})
 
 	useEffect(() => {
 		setValue('cart', items)
 	}, [items, setValue])
 
 	const onSubmit: SubmitHandler<Order> = async data => {
+		console.log(data)
 		try {
 			await addOrder(data)
 			dispatch(resetProductCartAction())

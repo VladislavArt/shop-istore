@@ -45,16 +45,3 @@ export const store = configureStore({
 })
 
 export const persistor = persistStore(store)
-
-// export const store = configureStore({
-// 	reducer: {
-// 		filter: filterReducer,
-// 		cart: cartReducer,
-// 		[baseApi.reducerPath]: baseApi.reducer,
-// 	},
-
-// 	middleware: getDefaultMiddleware =>
-// 		getDefaultMiddleware({ thunk: { extraArgument } }).concat(
-// 			baseApi.middleware
-// 		),
-// })

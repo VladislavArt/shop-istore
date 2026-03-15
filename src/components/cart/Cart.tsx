@@ -8,6 +8,7 @@ import btn from '../button/style.module.scss'
 
 function Cart () {
 	const dispatch = useAppDispatch()
+
 	const items = useAppSelector(state => state.cart.items)
 	const totalCount = useAppSelector(state => state.cart.totalCount)
 	const totalAmount = useAppSelector(state => state.cart.totalAmount)

@@ -113,46 +113,5 @@
       "title": "Ноутбуки"
     }
   ],
-  "orders": [
-    {
-      "id": "94ec",
-      "name": "Vladislav",
-      "email": "vrooog@gmail.com",
-      "cart": [
-        {
-          "id": "4",
-          "imgName": "iphone",
-          "title": "iPhone",
-          "price": 50000,
-          "cat": "phone",
-          "memory": "128 Gb",
-          "color": "black",
-          "desc": "Современный смартфон iphone с памятью 128 Gb ",
-          "count": 1
-        },
-        {
-          "id": "3",
-          "imgName": "ipad",
-          "title": "iPad",
-          "price": 60000,
-          "cat": "tablet",
-          "memory": "64 Gb",
-          "color": "gray",
-          "desc": "Удобный планшет iPad с памятью 64 Gb",
-          "count": 1
-        },
-        {
-          "id": "2",
-          "imgName": "imac",
-          "title": "iMac",
-          "price": 140000,
-          "cat": "comp",
-          "memory": "2 Tb",
-          "color": "white",
-          "desc": "Мощный настольный компьютер iMac с памятью 2 Tb",
-          "count": 1
-        }
-      ]
-    }
-  ]
+  "orders": []
 }
