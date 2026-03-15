@@ -1,6 +1,6 @@
 import { toggleCartOpenAction } from '@/modules/cart/cart.slice'
 import { useAppDispatch } from '@/shared/redux'
-import { CartItemsHTML } from './CartItemsHTML'
+import { CartItemsHTML } from './cartItems/CartItemsHTML'
 import style from './style.module.scss'
 
 function Cart() {

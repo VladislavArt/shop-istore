@@ -1,9 +1,9 @@
 import { useAppSelector } from '@/shared/redux'
 import { Link } from 'react-router-dom'
-import Button from '../button/Button'
-import btn from '../button/style.module.scss'
-import CartItem from '../cartItem/CartItem'
-import style from './style.module.scss'
+import Button from '@/components/button/Button'
+import btn from '@/components/button/style.module.scss'
+import CartItem from './cartItem/CartItem'
+import style from '../style.module.scss'
 
 export const CartItemsHTML = () => {
 	const { items, totalCount, totalAmount } = useAppSelector(state => state.cart)

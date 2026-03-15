@@ -7,13 +7,13 @@ import { useForm, type SubmitHandler } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Button from '../button/Button'
 import Cart from '../cart/Cart'
-import CartItem from '../cartItem/CartItem'
+import CartItem from '../cart/cartItems/cartItem/CartItem'
 import Footer from '../footer/Footer'
 import style from './style.module.scss'
 
 function Order() {
 	const dispatch = useAppDispatch()
-	
+
 	const navigate = useNavigate()
 
 	const items = useAppSelector(state => state.cart.items)
