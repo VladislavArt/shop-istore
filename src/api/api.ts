@@ -1,7 +1,7 @@
 import { baseApi } from '@/shared/api'
 import type { ICategories } from '@/types/categories.types'
 import type { IProduct, Order, ProductQueryParams, TProductId } from '../types/product.type'
-import { createSearchParams } from '@/utils/CreateSearchParams'
+import { createSearchParams } from '@/utils/createSearchParams'
 import { CatsDtoSchema, ProductsDtoSchema } from '@/types/dtoSchema'
 
 export const api = baseApi.injectEndpoints({
