@@ -11,9 +11,11 @@ export function MainContent() {
 		return <Error message="Данные по продуктам с сервера не пришли" />
 	}
 
+	console.log(sortedProducts)
+
 	return (
 		<>
-			{sortedProducts ? (
+			{sortedProducts.length ? (
 				<div className="sort-wrapper">
 					<PriceReactSelect />
 				</div>
