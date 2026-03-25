@@ -25,7 +25,6 @@ export function debounce(func: DebounceFunction, delay: number) {
 				try {
 					const data = await func(params, signal)
 					resolve(data)
-					console.log('Debounced function called')
 				} catch (error) {
 					console.log(error, 'ошибка данных')
 				}

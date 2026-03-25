@@ -1,8 +1,8 @@
+import { useProductsFiltered } from '@/hooks/useProductsFiltered'
 import { Card } from '../card/Card'
 import { Error } from '../error/Error'
 import { PriceReactSelect } from '../priceReactSelect/PriceReactSelect'
 import './style.scss'
-import { useProductsFiltered } from './useProductsFiltered'
 
 export function MainContent() {
 	const { sortedProducts } = useProductsFiltered()
@@ -10,8 +10,6 @@ export function MainContent() {
 	if (!sortedProducts) {
 		return <Error message="Данные по продуктам с сервера не пришли" />
 	}
-
-	console.log(sortedProducts)
 
 	return (
 		<>
