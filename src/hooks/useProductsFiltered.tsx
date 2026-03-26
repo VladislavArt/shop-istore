@@ -1,4 +1,4 @@
-import { useProductsApi } from '@/hooks/useProductsApi'
+import { api } from '@/api/api'
 import { useAppSelector } from '@/shared/redux'
 import type { IProduct } from '@/types/product.type'
 
@@ -10,8 +10,6 @@ export function useProductsFiltered() {
 		selectedColor: color,
 		sort
 	} = useAppSelector(state => state.filter)
-
-	const { api } = useProductsApi()
 
 	const { data } = api.useGetProductsQuery({
 		category,
