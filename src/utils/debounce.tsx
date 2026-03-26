@@ -13,10 +13,12 @@ export const debounce = (baseQuery: BaseQueryFn): BaseQueryFn => {
 
 		if (timeout) clearTimeout(timeout)
 
-		return new Promise((resolve) => {
+		return new Promise(resolve => {
 			timeout = setTimeout(async () => {
 				if (api.signal.aborted) return
+
 				resolve(await baseQuery(args, api, extraOptions))
+				
 			}, debounceDelay)
 		})
 	}

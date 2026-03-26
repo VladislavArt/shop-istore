@@ -20,26 +20,11 @@ export const api = baseApi.injectEndpoints({
 			query: (params: ProductQueryParams) => ({
 				url: '/products',
 				params
-			})
+			}),
+			extraOptions: { debounce: 1000 },
+			transformResponse: (res: ICategories[]) =>
+				ProductsDtoSchema.array().parse(res)
 		}),
-
-		// getProducts: build.query<IProduct[], ProductQueryParams>({
-		// 		queryFn: async (arg: ProductQueryParams, api: BaseQueryApi) => {
-		// 			const { signal } = api
-		// 			try {
-		// 				const data = await debounceProducts(arg, signal)
-		// 				return { data }
-		// 			} catch (error) {
-		// 				return {
-		// 					error: {
-		// 						status: 'FETCH_ERROR',
-		// 						error: (error as Error).message,
-		// 						data: undefined
-		// 					} as FetchBaseQueryError
-		// 				}
-		// 			}
-		// 		}
-		// 	})
 
 		getProduct: build.query<IProduct, TProductId>({
 			query: productId => `/products/${productId}`,
