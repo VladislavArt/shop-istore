@@ -1,8 +1,8 @@
 import type { BaseQueryFn } from '@reduxjs/toolkit/query'
 
-export const debounce = (baseQuery: BaseQueryFn): BaseQueryFn => {
-	let timeout: ReturnType<typeof setTimeout> | null = null
+const timeouts = new Map<string, ReturnType<typeof setTimeout>>()
 
+export const debounce = (baseQuery: BaseQueryFn): BaseQueryFn => {
 	return async (args, api, extraOptions) => {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const debounceDelay = (extraOptions as any)?.debounce ?? 0
@@ -11,15 +11,21 @@ export const debounce = (baseQuery: BaseQueryFn): BaseQueryFn => {
 			return baseQuery(args, api, extraOptions)
 		}
 
-		if (timeout) clearTimeout(timeout)
+		const endpoint = api.endpoint
+
+		if (timeouts.has(endpoint)) {
+			clearTimeout(timeouts.get(endpoint))
+		}
 
 		return new Promise(resolve => {
-			timeout = setTimeout(async () => {
+			const timeout = setTimeout(async () => {
+				timeouts.delete(endpoint)
+
 				if (api.signal.aborted) return
 
 				resolve(await baseQuery(args, api, extraOptions))
-				
 			}, debounceDelay)
+			timeouts.set(endpoint, timeout)
 		})
 	}
 }

@@ -20,11 +20,7 @@ export function useProductsFiltered() {
 		sort
 	})
 
-	if (!data) {
-		return { sortPriceProduct: () => [] }
-	}
-
-	const filteredProducts = data.filter(
+	const filteredProducts = data?.filter(
 		product =>
 			product.price >= minPrice &&
 			product.price <= maxPrice &&
@@ -44,7 +40,7 @@ export function useProductsFiltered() {
 		})
 	}
 
-	const sortedProducts = sortPriceProduct(filteredProducts, sort)
+	const sortedProducts = sortPriceProduct(filteredProducts || [], sort)
 
 	return { sortedProducts }
 }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './style.scss'
 import { useAppDispatch, useAppSelector } from '@/shared/redux'
-import { catAction, changeSortAction, priceMaxAction, priceMinAction, resetCheckboxAction } from '@/modules/filter/filter.slice'
+import { resetFiltersAction } from '@/modules/filter/filter.slice'
 import { toggleCartOpenAction } from '@/modules/cart/cart.slice'
 
 export function Header() {
@@ -9,11 +9,7 @@ export function Header() {
 	const totalCount = useAppSelector(state => state.cart.totalCount)
 
 	const clickHandler = () => {
-		dispatch(catAction('all'))
-		dispatch(priceMinAction(0))
-		dispatch(priceMaxAction(500000))
-		dispatch(resetCheckboxAction([]))
-		dispatch(changeSortAction(''))
+		dispatch(resetFiltersAction())
 	}
 
 	return (

@@ -11,6 +11,8 @@ export function MainContent() {
 		return <Error message="Данные по продуктам с сервера не пришли" />
 	}
 
+	console.log(sortedProducts)
+
 	return (
 		<>
 			{sortedProducts.length ? (
@@ -22,7 +24,7 @@ export function MainContent() {
 			)}
 
 			<div className="content__cards-grid">
-				{sortedProducts?.map(product => {
+				{sortedProducts.map(product => {
 					return (
 						<Card
 							key={product.id}

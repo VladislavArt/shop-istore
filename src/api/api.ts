@@ -21,8 +21,8 @@ export const api = baseApi.injectEndpoints({
 				url: '/products',
 				params
 			}),
-			extraOptions: { debounce: 1000 },
-			transformResponse: (res: ICategories[]) =>
+			extraOptions: { debounce: 100 },
+			transformResponse: (res: IProduct[]) =>
 				ProductsDtoSchema.array().parse(res)
 		}),
 
