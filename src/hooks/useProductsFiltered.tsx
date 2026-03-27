@@ -1,33 +1,37 @@
 import { api } from '@/api/api'
 import { useAppSelector } from '@/shared/redux'
 import type { IProduct } from '@/types/product.type'
+import { useMemo } from 'react'
 
 export function useProductsFiltered() {
 	const {
 		price: { min: minPrice, max: maxPrice },
 		category,
-		selectedMemory: memory,
-		selectedColor: color,
+		selectedMemory,
+		selectedColor,
 		sort
 	} = useAppSelector(state => state.filter)
 
-	const { data } = api.useGetProductsQuery({
+	const { data, isLoading, isError } = api.useGetProductsQuery({
 		category,
 		minPrice,
 		maxPrice,
-		memory,
-		color,
+		selectedMemory,
+		selectedColor,
 		sort
 	})
 
-	const filteredProducts = data?.filter(
-		product =>
+	const filteredProducts = useMemo(() => {
+		if (!data) return []
+
+		return data.filter(product =>
 			product.price >= minPrice &&
 			product.price <= maxPrice &&
 			(product.cat === category || category === 'all') &&
-			(memory.length === 0 || memory.includes(product.memory)) &&
-			(color.length === 0 || color.includes(product.color))
-	)
+			(!selectedMemory.length || selectedMemory.includes(product.memory)) &&
+			(!selectedColor.length || selectedColor.includes(product.color))
+		)
+	}, [data, category, minPrice, maxPrice, selectedMemory, selectedColor])
 
 	const sortPriceProduct = (product: IProduct[], sorted: string) => {
 		return product.sort((a, b) => {
@@ -40,7 +44,7 @@ export function useProductsFiltered() {
 		})
 	}
 
-	const sortedProducts = sortPriceProduct(filteredProducts || [], sort)
+	const sortedProducts = sortPriceProduct(filteredProducts, sort)
 
-	return { sortedProducts }
+	return { sortedProducts, isLoading, isError }
 }

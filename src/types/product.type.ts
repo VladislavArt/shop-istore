@@ -18,8 +18,8 @@ export type Order = {
 
 export type ProductQueryParams = {
 	category?: string
-	memory?: string[]
-	color?: string[]
+	selectedMemory?: string[]
+	selectedColor?: string[]
 	minPrice?: number
 	maxPrice?: number
 	sort?: string

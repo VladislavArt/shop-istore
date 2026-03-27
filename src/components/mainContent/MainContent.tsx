@@ -3,25 +3,32 @@ import { Card } from '../card/Card'
 import { Error } from '../error/Error'
 import { PriceReactSelect } from '../priceReactSelect/PriceReactSelect'
 import './style.scss'
+import LoaderMain from '../loaderMainContent/LoaderMain'
 
 export function MainContent() {
-	const { sortedProducts } = useProductsFiltered()
+	const { sortedProducts, isLoading, isError } = useProductsFiltered()
 
-	if (!sortedProducts) {
+	if (isLoading) {
+		return <LoaderMain />
+	}
+
+	if (!sortedProducts || isError) {
 		return <Error message="Данные по продуктам с сервера не пришли" />
+	}
+
+	if (sortedProducts.length === 0) {
+		return (
+			<Error message="Нет продуктов для отображения. Поменяйте значение фильтра" />
+		)
 	}
 
 	console.log(sortedProducts)
 
 	return (
 		<>
-			{sortedProducts.length ? (
-				<div className="sort-wrapper">
-					<PriceReactSelect />
-				</div>
-			) : (
-				<Error message="Нет продуктов для отображения. Поменяйте значение фильтра" />
-			)}
+			<div className="sort-wrapper">
+				<PriceReactSelect />
+			</div>
 
 			<div className="content__cards-grid">
 				{sortedProducts.map(product => {
