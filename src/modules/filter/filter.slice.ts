@@ -1,3 +1,4 @@
+import toggleCheckbox from '@/utils/toggleCheckbox'
 import { createAction, createReducer } from '@reduxjs/toolkit'
 
 type FilterState = {
@@ -42,23 +43,11 @@ export const filterReducer = createReducer(initialFilterState, builder => {
 	})
 
 	builder.addCase(toggleMemoryAction, (state, action) => {
-		if (state.selectedMemory.includes(action.payload)) {
-			state.selectedMemory = state.selectedMemory.filter(
-				item => item !== action.payload
-			)
-		} else {
-			state.selectedMemory.push(action.payload)
-		}
+		toggleCheckbox(state.selectedMemory, action.payload)
 	})
 
 	builder.addCase(toggleColorAction, (state, action) => {
-		if (state.selectedColor.includes(action.payload)) {
-			state.selectedColor = state.selectedColor.filter(
-				item => item !== action.payload
-			)
-		} else {
-			state.selectedColor.push(action.payload)
-		}
+		toggleCheckbox(state.selectedColor, action.payload)
 	})
 
 	builder.addCase(changeSortAction, (state, action) => {

@@ -22,8 +22,6 @@ export function MainContent() {
 		)
 	}
 
-	console.log(sortedProducts)
-
 	return (
 		<>
 			<div className="sort-wrapper">
