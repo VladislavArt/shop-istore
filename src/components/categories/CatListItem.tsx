@@ -1,7 +1,6 @@
 import { catAction } from '@/modules/filter/filter.slice'
 import { useAppDispatch } from '@/shared/redux'
 import type { ICategories } from '@/types/categories.types'
-import { Link } from 'react-router-dom'
 
 interface Props {
 	category: ICategories
@@ -16,9 +15,9 @@ export function CatListItem({ category }: Props) {
 
 	return (
 		<li>
-			<Link to='/' onClick={clickHandler}>
+			<button onClick={clickHandler}>
 				{category.title}
-			</Link>
+			</button>
 		</li>
 	)
 }
