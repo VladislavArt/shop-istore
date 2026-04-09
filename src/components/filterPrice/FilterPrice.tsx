@@ -1,21 +1,23 @@
 import CurrencyInput from 'react-currency-input-field'
 import './style.scss'
 import { useAppDispatch, useAppSelector } from '@/shared/redux'
-import { priceMaxAction, priceMinAction } from '@/modules/filter/filter.slice'
 import ReactRangeSliderInput from 'react-range-slider-input'
 import 'react-range-slider-input/dist/style.css'
+import { priceMaxAction, priceMinAction } from '@/modules/filter/filter.slice'
 
 export function FilterPrice() {
 	const dispatch = useAppDispatch()
 
 	const { price: { min, max } } = useAppSelector(state => state.filter)
 
-	const handleChangeMin = (value: string | undefined) => {
-		dispatch(priceMinAction(Number(value)))
+	const handleChangePrice = (type: 'min' | 'max') => (value?: string) => {
+		const num = value ? Number(value) : (type === 'min' ? 0 : 500000)
+		dispatch(type === 'min' ? priceMinAction(num) : priceMaxAction(num))
 	}
 
-	const handleChangeMax = (value: string | undefined) => {
-		dispatch(priceMaxAction(Number(value)))
+	const handleChangeRange = (value: number[]) => {
+		dispatch(priceMinAction(value[0]))
+		dispatch(priceMaxAction(value[1]))
 	}
 
 	return (
@@ -30,7 +32,7 @@ export function FilterPrice() {
 					placeholder='Please enter'
 					decimalsLimit={0}
 					suffix='₽'
-					onValueChange={(value) => handleChangeMin(value || '')}
+					onValueChange={handleChangePrice('min')}
 				/>
 
 				<span>-</span>
@@ -43,17 +45,14 @@ export function FilterPrice() {
 					placeholder='Please enter'
 					decimalsLimit={0}
 					suffix='₽'
-					onValueChange={(value) => handleChangeMax(value || '')}
+					onValueChange={handleChangePrice('max')}
 				/>
 			</div>
 
 			<div className='filter-price__range'>
 				<ReactRangeSliderInput
 					value={[min, max]}
-					onInput={(value) => {
-						handleChangeMin(String(value[0]))
-						handleChangeMax(String(value[1]))
-					}}
+					onInput={handleChangeRange}
 					min={0}
 					max={500000}
 				/>
