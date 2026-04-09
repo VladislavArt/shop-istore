@@ -10,17 +10,13 @@ interface Props {
 export function CatListItem({ category }: Props) {
 	const dispatch = useAppDispatch()
 
-	const clickHandler = (event: React.MouseEvent<HTMLElement>) => {
-		const target = event.currentTarget
-		const categories = target.getAttribute('data-category')
-		if (categories !== null) {
-			dispatch(catAction(categories))
-		}
+	const clickHandler = () => {
+		dispatch(catAction(category.slug))
 	}
 
 	return (
 		<li>
-			<Link to='/' data-category={category.slug} onClick={clickHandler}>
+			<Link to='/' onClick={clickHandler}>
 				{category.title}
 			</Link>
 		</li>
