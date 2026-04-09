@@ -27,7 +27,7 @@ export function FilterPrice() {
 					className='input'
 					value={min || ''}
 					name='priceMin'
-					placeholder='Please enter the number'
+					placeholder='Please enter'
 					decimalsLimit={0}
 					suffix='₽'
 					onValueChange={(value) => handleChangeMin(value || '')}
@@ -40,7 +40,7 @@ export function FilterPrice() {
 					className='input'
 					value={max === 500000 ? '' : max}
 					name='priceMax'
-					placeholder='Please enter the number'
+					placeholder='Please enter'
 					decimalsLimit={0}
 					suffix='₽'
 					onValueChange={(value) => handleChangeMax(value || '')}
