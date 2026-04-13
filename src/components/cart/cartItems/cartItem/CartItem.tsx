@@ -19,7 +19,7 @@ function CartItem({ item }: Prop) {
 				<img
 					className={style.img}
 					src={`/images/${item.imgName}.jpg`}
-					alt=""
+					alt={item.title}
 				/>
 				<div className={style.desc}>
 					<h3 className={style.title}>{item.title}</h3>
@@ -30,10 +30,11 @@ function CartItem({ item }: Prop) {
 				<button
 					className={style.btn}
 					onClick={() => dispatch(decreaseCountAction(item))}
+					aria-label="Уменьшить количество"
 				>
 					<img
 						src="/images/minus.svg"
-						alt=""
+						alt={item.title}
 					/>
 				</button>
 
@@ -47,10 +48,11 @@ function CartItem({ item }: Prop) {
 				<button
 					className={style.btn}
 					onClick={() => dispatch(increaseCountAction(item))}
+					aria-label="Увеличить количество"
 				>
 					<img
 						src="/images/plus.svg"
-						alt=""
+						alt={item.title}
 					/>
 				</button>
 			</div>
