@@ -1,5 +1,4 @@
 import Button from '@/components/button/Button'
-import btn from '@/components/button/style.module.scss'
 import { useAppSelector } from '@/shared/redux'
 import { Link, useLocation } from 'react-router-dom'
 import style from '../style.module.scss'
@@ -7,6 +6,7 @@ import CartItem from './cartItem/CartItem'
 
 export const CartItemsHTML = () => {
 	const { items, totalCount, totalAmount } = useAppSelector(state => state.cart)
+
 	const location = useLocation()
 
 	if (items.length === 0) {
@@ -20,10 +20,10 @@ export const CartItemsHTML = () => {
 	return (
 		<>
 			<section className={style.items}>
-				{items.map((item, index) => {
+				{items.map(item => {
 					return (
 						<CartItem
-							key={index}
+							key={item.id}
 							item={item}
 						/>
 					)
@@ -36,12 +36,11 @@ export const CartItemsHTML = () => {
 			</section>
 
 			{location.pathname !== '/order' ? (
-				<Link
-					to="order"
-					className={btn.btn}
-				>
-					<Button title="Оформить заказ" />
-				</Link>
+				<Button
+					as={Link}
+					to="/order"
+					title="Оформить заказ"
+				/>
 			) : (
 				<Button title="Заполните форму" />
 			)}
