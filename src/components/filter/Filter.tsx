@@ -8,7 +8,7 @@ export function Filter() {
 	return (
 		<div className='filter'>
 			<div className='filter__wrapper'>
-				<div className='filter__title'>Фильтр</div>
+				<h2 className='filter__title'>Фильтр</h2>
 				<FilterPrice />
 				<FilterMemory />
 				<FilterColor />
