@@ -1,6 +1,8 @@
 import toggleCheckbox from '@/utils/toggleCheckbox'
 import { createAction, createReducer } from '@reduxjs/toolkit'
 
+const MAX_PRICE = 500000
+
 type FilterState = {
 	category: string
 	price: { min: number, max: number }
@@ -13,7 +15,7 @@ type FilterState = {
 
 const initialFilterState: FilterState = {
 	category: 'all',
-	price: { min: 0, max: 500000 },
+	price: { min: 0, max: MAX_PRICE },
 	memory: ['0 Tb', '64 Gb', '128 Gb', '256 Gb', '512 Gb', '1 Tb', '2 Tb'],
 	selectedMemory: [],
 	color: ['white', 'gray', 'space-gray', 'black'],
