@@ -7,10 +7,10 @@ export function FilterMemory() {
 
 	return (
 		<div className='filter-memory'>
-			<div className='filter-memory__title'>Объем памяти</div>
+			<h3 className='filter-memory__title'>Объем памяти</h3>
 			<div className='filter-memory__list'>
-				{memory.map((memory, index) => {
-					return <CheckBox key={index} memory={memory} />
+				{memory.map(memory => {
+					return <CheckBox key={memory} memory={memory} />
 				})}
 			</div>
 		</div>
