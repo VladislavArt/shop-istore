@@ -22,7 +22,6 @@ export const decreaseCountAction = createAction<IProduct>('decrease')
 export const resetProductCartAction = createAction('resetProduct')
 
 export const cartReducer = createReducer(initialCartState, builder => {
-
 	builder.addCase(toggleCartOpenAction, state => {
 		state.cartOpen = !state.cartOpen
 	})
@@ -49,30 +48,35 @@ export const cartReducer = createReducer(initialCartState, builder => {
 	})
 
 	builder.addCase(increaseCountAction, (state, action) => {
-		const product = action.payload
-		const prod = state.items.find(item => item.id === product.id)
+		const productIndex = state.items.findIndex(
+			item => item.id === action.payload.id
+		)
 
-		if (prod) {
-			prod.count = (prod.count ?? 0) + 1
+		if (productIndex === -1) return
 
-			state.totalCount++
-			state.totalAmount += prod.price
-		}
+		const product = state.items[productIndex]
+
+		product.count = (product.count ?? 0) + 1
+
+		state.totalCount++
+		state.totalAmount += product.price
 	})
 
 	builder.addCase(decreaseCountAction, (state, action) => {
-		const product = action.payload
-		const prod = state.items.find(item => item.id === product.id)
+		const productIndex = state.items.findIndex(
+			item => item.id === action.payload.id
+		)
 
-		if (prod?.count === 1) {
-			state.items = state.items.filter(item => item.id !== product.id)
-		}
+		if (productIndex === -1) return
 
-		if (prod?.count) {
-			prod.count--
-			state.totalCount--
-			state.totalAmount -= prod.price
+		const product = state.items[productIndex]
+		state.totalCount--
+		state.totalAmount -= product.price
+
+		if (product.count === 1) {
+			state.items.splice(productIndex, 1)
+		} else {
+			product.count = (product.count ?? 0) - 1
 		}
 	})
-	
 })
