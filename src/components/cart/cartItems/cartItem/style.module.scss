@@ -31,11 +31,11 @@
 
 .controls {
 	display: flex;
-	align-items: center;
 	gap: 4px;
 }
 
 .btn {
+	display: flex;
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
