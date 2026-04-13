@@ -10,8 +10,8 @@ export function ColorCheckbox({ color }: Prop) {
 	const selectedColor = useAppSelector(state => state.filter.selectedColor)
 	const dispatch = useAppDispatch()
 
-	const handleCheckboxChange = (value: string) => {
-		dispatch(toggleColorAction(value))
+	const handleChange = () => {
+		dispatch(toggleColorAction(color))
 	}
 
 	return (
@@ -21,7 +21,7 @@ export function ColorCheckbox({ color }: Prop) {
 				className="color-checkbox__real visually-hidden"
 				value={color}
 				checked={selectedColor.includes(color)}
-				onChange={() => handleCheckboxChange(color)}
+				onChange={handleChange}
 			/>
 			<span className={`color-checkbox__visible ${color}`}></span>
 		</label>
