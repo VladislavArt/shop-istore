@@ -7,10 +7,10 @@ export function FilterColor() {
 
 	return (
 		<div className='filter-color'>
-			<div className='filter-color__title'>Цвет</div>
+			<h3 className='filter-color__title'>Цвет</h3>
 			<div className='filter-color__list'>
-				{filterColor.map((color, index) => {
-					return <ColorCheckbox key={index} color={color} />
+				{filterColor.map(color => {
+					return <ColorCheckbox key={color} color={color} />
 				})}
 			</div>
 		</div>
