@@ -10,8 +10,8 @@ export function CheckBox({ memory }: Prop) {
 	const dispatch = useAppDispatch()
 	const selectedMemory = useAppSelector(state => state.filter.selectedMemory)
 
-	const handleCheckboxChange = (value: string) => {
-		dispatch(toggleMemoryAction(value))
+	const handleChange = () => {
+		dispatch(toggleMemoryAction(memory))
 	}
 
 	return (
@@ -21,10 +21,10 @@ export function CheckBox({ memory }: Prop) {
 					type='checkbox'
 					value={memory}
 					checked={selectedMemory.includes(memory)}
-					onChange={() => handleCheckboxChange(memory)}
+					onChange={handleChange}
 				/>
+				<span className='checkbox__title'>{memory}</span>
 			</label>
-			<span className='checkbox__title'>{memory}</span>
 		</div>
 	)
 }
