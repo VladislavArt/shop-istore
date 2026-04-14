@@ -1,57 +1,37 @@
-Интернет магазин, с фильтрацией, корзиной, отправкой заказа в бд, с формой регистрации(реализовал через hook form), запросы на RTK Query, обернул в debounce и теперь по любому endpoint, где в запросе укажу, запрос улетает например раз в 100 мс, а не каждый раз, когда например мы двигаем range slider с ценой) Собрал проект на vite.
+# E-Commerce App (React + TS + Vite)
+
+Полноценный интернет-магазин с фильтрацией, корзиной и оптимизированным взаимодействием с API.
+
+## 🚀 Ключевые особенности и оптимизации
+
+*   **Оптимизация сетевого трафика (Custom RTK Query Debounce):** Реализовал кастомную обертку над `baseApi`, которая внедряет debounce-логику на уровне endpoint. Снизил нагрузку на бэкенд при работе с "живыми" фильтрами (Range Slider цены) без лишних ререндеров и сетевых запросов.
+*   **Управление состоянием:** 
+    *   **Redux Toolkit** для глобального стейта (фильтры, корзина).
+    *   **Redux Persist** для сохранения корзины между сессиями пользователя.
+*   **Работа с формами:** Валидация и сбор данных заказа через **React Hook Form**.
+*   **Типизация:** TypeScript
+*   **Архитектура:** Компонентный подход, декомпозиция бизнес-логики в кастомные хуки и редюсеры.
+
+## 🛠 Стек технологий
+
+- **Core:** React 18, TypeScript, Vite
+- **State:** Redux Toolkit, Redux Persist
+- **API:** RTK Query (Fetch API)
+- **Forms:** React Hook Form
+- **Styles:** SCSS Modules, BEM
+
+## 📦 Установка и запуск
+
+Проект использует **json-server** для имитации бэкенда и **concurrently** для одновременного запуска всех сервисов одной командой.
+
+1. **Установите зависимости:**
+      npm install
+
+2. **Запуск проекта:**
+      npm run dev
+
+3. **Сборка проекта:**
+      npm run build
 
 
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
