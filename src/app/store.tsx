@@ -20,21 +20,18 @@ export const extraArgument = {
 }
 
 const persistConfig = {
-	key: 'root',
-	storage,
-	whitelist: ['cart'],
+	key: 'cart',
+	storage
 }
 
 const rootReducer = combineReducers({
 	filter: filterReducer,
-	cart: cartReducer,
+	cart: persistReducer(persistConfig, cartReducer),
 	[baseApi.reducerPath]: baseApi.reducer,
 })
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
 export const store = configureStore({
-	reducer: persistedReducer,
+	reducer: rootReducer,
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
 			thunk: { extraArgument },
